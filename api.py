@@ -2,20 +2,20 @@ from flask import Flask
 from flask import request
 import random
 import User
-import DB
+from DB import DB
 
 app = Flask(__name__)
 
 user_list = []
 curr_db = DB()
 
-@app.route('/find',methods=['POST'])
+@app.route('/find',methods=['GET'])
 def findMatch():
     # pick a random person
-    index = random.choice(user_list)
-    chosen_id = user_list[index]
+    # index = random.choice(user_list)
+    # chosen_id = user_list[index]
     # TODO: prevent choosing yourself 
-    return user_list
+    return 'hi'
 
 @app.route('/add',methods=['POST'])
 def addMatch():
@@ -32,3 +32,7 @@ def newUser():
         return 'FAILURE!'
     curr_db.add_user(content['name'])
     return 'SUCCESS!'
+
+@app.route('/bindaddy',methods=['GET'])
+def addMatch():
+    return "YAASSSSSSSS BINDADDY"
