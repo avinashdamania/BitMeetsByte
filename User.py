@@ -12,4 +12,4 @@ class User:
         self.matches.append(user)
 
     def bindaddy(self):
-        print("YASSSSS BINDADDY")
+        print("YASSSSS")
