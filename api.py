@@ -34,5 +34,5 @@ def newUser():
     return 'SUCCESS!'
 
 @app.route('/bindaddy',methods=['GET'])
-def addMatch():
+def bindaddy():
     return "YAASSSSSSSS BINDADDY"
