@@ -14,7 +14,7 @@ class DB:
     
     # Delete the user from the database 
     def del_user(self, id):
-        del database[id]
+        del self.database[id]
         
     def bindaddy(self):
         print("YESSS BINDDADDY")
