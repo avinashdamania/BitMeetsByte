@@ -19,3 +19,5 @@ class DB:
     def bindaddy(self):
         print("YESSS BINDDADDY")
     
+    def size(self):
+        return len(self.database)
