@@ -1,12 +1,22 @@
 from User import User
+import random
 class DB:
     def __init__(self):
         self.database = {}
         self.id = 0
-            
+    def gen_database(self):
+        bio=open("bios.txt", "r")#do bio.readline()
+        age_first_last=open("age_first_last.txt","r")
+        for i in range(22):
+            self.add_user(*age_first_last.readline().split(),bio.readline(),"./UserInfo/photos/"+str(i)+".png",random.randInt(0,3))
     # Add a user to the database
+<<<<<<< HEAD
     def add_user(self, first_name,last_name,age,bio,misc):
         user = User(first_name,last_name,age,bio,misc,self.id,"null")
+=======
+    def add_user(self, first_name,last_name,age,bio,img,skill):
+        user = User(first_name,last_name,age,bio,self.id,img,skill)
+>>>>>>> 123e85e392f129d05a7c608b903ec0d402ae41e1
         self.database[self.id] = user
         self.id += 1
 
