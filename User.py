@@ -13,10 +13,3 @@ class User:
     def add_match(self,user):
         self.matches.append(user)
 
-<<<<<<< HEAD
-=======
-    def bindaddy(self):
-
-        print("YASSSSS")
-
->>>>>>> 74ae1373cb3440676605796e0eb010cfbfb3582a

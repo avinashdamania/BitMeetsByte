@@ -6,7 +6,7 @@ class DB:
             
     # Add a user to the database
     def add_user(self, first_name,last_name,age,bio,misc):
-        user = User(first_name,last_name,age,bio,misc,self.id)
+        user = User(first_name,last_name,age,bio,misc,self.id,"null")
         self.database[self.id] = user
         self.id += 1
 
