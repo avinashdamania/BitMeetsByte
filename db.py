@@ -3,9 +3,6 @@ class DB:
     def __init__(self):
         self.database = {}
         self.id = 0
-    def gen_database(self):
-        bio=open("bios.txt", "r")#do bio.readline()
-        for i in range(22)
             
     # Add a user to the database
     def add_user(self, first_name,last_name,age,bio,misc):
@@ -23,9 +20,6 @@ class DB:
         
     def add_match(self,current_id,matched_user):
         self.database[current_id].add_match(matched_user)
-
-    def bindaddy(self):
-        print("YESSS BINDDADDY")
     
     def size(self):
         return len(self.database)
