@@ -9,7 +9,11 @@ class User:
         self.id = count
         self.img = img
         skillDict = {0:"FrontEnd Dev",1:"BackEnd Dev",2:"Mobile Dev",3:"Web Dev"}
-        self.skill = lol[skillDict]
+        self.skill = skillDict[skill]
 
     def add_match(self,user):
         self.matches.append(user)
+    def remove_matches(self,DB)
+        for i in [x.id for x in self.matches]
+            DB[x].matches=[y for y in DB[x].matches if y != self]
+        self.matches.clear()

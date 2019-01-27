@@ -14,11 +14,14 @@ class DB:
         user = User(first_name,last_name,age,bio,self.id,img,skill)
         self.database[self.id] = user
         self.id += 1
-
+    def find_match(usr_id):
+        return random.choice([y for y in database.values() if y.skill!=database[usr_id].skill])
     # Get a user from the database
     def get_user(self, id):
         return self.database[id]
-    
+    # Clear a user's matches
+    def remove_User_matches(self,id):
+        self.database[id].remove_matches(self.database)
     # Delete the user from the database 
     def del_user(self, id):
         del self.database[id]
