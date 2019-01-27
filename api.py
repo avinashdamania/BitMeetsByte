@@ -2,7 +2,7 @@ from flask import Flask
 from flask import request, request
 import random
 import User
-from DB import DB
+from db import DB
 app = Flask(__name__)
 curr_db = DB()
 
@@ -58,8 +58,8 @@ def newUser():
         content['age'],
         content['bio'],
         content['misc'])
-    return content['name'] +  ' has been added'
+    return content['first_name'] +  ' has been added'
 
-@app.route('/bindaddy',methods=['GET'])
-def bindaddy():
-    return "YAASSSSSSSS BINDADDY"
+if __name__== "__main__":
+    app.run(debug=True)
+

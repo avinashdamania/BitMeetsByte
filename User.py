@@ -1,6 +1,6 @@
 from PIL import Image
 class User:
-    def __init__(self,first_name,last_name,age,bio,count,img,skill):
+    def __init__(self,first_name,last_name,age,bio,count,img='null',skill):
         self.first_name = first_name
         self.last_name = last_name 
         self.age = age
@@ -12,6 +12,3 @@ class User:
 
     def add_match(self,user):
         self.matches.append(user)
-
-    def bindaddy(self):
-        print("YASSSSS")z
