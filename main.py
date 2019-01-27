@@ -1,8 +1,9 @@
 from flask import Flask
-from flask import request, request
+from flask import request, Response
 import random
 import User
 from db import DB
+import json
 app = Flask(__name__)
 curr_db = DB()
 
@@ -15,15 +16,8 @@ def home():
 def findMatch():
     if curr_db.size() == 0:
         return "ERROR:Database is empty"
-    # pick a match
-    index = getMatch()
-    user = curr_db.get_user(index)
-    # TODO: prevent choosing yourself
-    # TODO: add user data when actual matching is used 
-    return user
-
-def getMatch():
-    return random.randint(0,curr_db.size())
+    content = request.json()
+    return DB.findMatch(content["id"])
 
 # {otherUserID: [id]
 #  currentUserID: [id]           }
@@ -61,8 +55,13 @@ def newUser():
         content['last_name'],
         content['age'],
         content['bio'],
-        content['misc'])
-    return content['first_name'] +  ' has been added'
+        content['img'],
+        content['skill'])
+    size =  curr_db.size() - 1
+    json_response = {
+        "id": size
+    }
+    return Response(json.dumps(json_response),mimetype='application/json')
 
 if __name__== "__main__":
     app.run(debug=True)
