@@ -13,15 +13,15 @@ class DB:
     def add_user(self, first_name,last_name,age,bio,img,skill):
         self.database[self.id] = User(first_name,last_name,age,bio,self.id,img,skill)
         self.id += 1
-    def find_match(usr_id):
-        return random.choice([y for y in database.values() if y.skill!=database[usr_id].skill])
+    def find_match(self, id):
+        return random.choice([y for y in self.database.values() if y.skill!=self.database[id].skill]).id
     # Get a user from the database
     def get_user(self, id):
         return self.database[id]
     # Clear a user's matches
     def remove_User_matches(self,id):
-        for i in [x.id for x in database[id].matches]:
-            DB[x].matches=[y for y in DB[x].matches if y != database[id]]
+        for i in  self.database[id].matches:
+            self.database[i].matches=[y for y in self.database[i].matches if y != id]
         self.database[id].remove_matches()
     # Delete the user from the database 
     def del_user(self, id):
