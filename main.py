@@ -23,7 +23,7 @@ def findMatch():
     return user
 
 def getMatch():
-    return random.randint(0,curr_db.size())
+    return random.randint(0,curr_db.size()-1)
 
 # {otherUserID: [id]
 #  currentUserID: [id]           }
