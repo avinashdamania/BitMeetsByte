@@ -10,20 +10,18 @@ class DB:
         for i in range(22):
             self.add_user(*age_first_last.readline().split(),bio.readline(),"./UserInfo/photos/"+str(i)+".png",random.randInt(0,3))
     # Add a user to the database
-<<<<<<< HEAD
-    def add_user(self, first_name,last_name,age,bio,misc):
-        user = User(first_name,last_name,age,bio,misc,self.id,"null")
-=======
     def add_user(self, first_name,last_name,age,bio,img,skill):
         user = User(first_name,last_name,age,bio,self.id,img,skill)
->>>>>>> 123e85e392f129d05a7c608b903ec0d402ae41e1
         self.database[self.id] = user
         self.id += 1
-
+    def find_match(usr_id):
+        return random.choice([y for y in database.values() if y.skill!=database[usr_id].skill])
     # Get a user from the database
     def get_user(self, id):
         return self.database[id]
-    
+    # Clear a user's matches
+    def remove_User_matches(self,id):
+        self.database[id].remove_matches(self.database)
     # Delete the user from the database 
     def del_user(self, id):
         del self.database[id]
