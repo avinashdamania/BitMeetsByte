@@ -6,7 +6,7 @@ from db import DB
 import json
 app = Flask(__name__)
 curr_db = DB()
-
+curr_db.gen_database()
 @app.route('/')
 def home():
     return 'hi'
@@ -17,7 +17,10 @@ def findMatch():
     if curr_db.size() == 0:
         return "ERROR:Database is empty"
     content = request.json()
-    return DB.findMatch(content["id"])
+    json_response = {
+        "id": DB.findMatch(content["id"])
+    }
+    return Response(json.dumps(json_response),mimetype='application/json')
 
 # {otherUserID: [id]
 #  currentUserID: [id]           }
@@ -26,8 +29,7 @@ def addMatch():
     if curr_db.size() == 0:
         return "ERROR:Database is empty"
     content = request.get_json()
-    matched_user = curr_db.get_user(content['otherUserID'])
-    curr_db.add_match(id,matched_user)
+    curr_db.add_match(content["currentUserID"],content["otherUserID"])
     return curr_db
 
 # expects request
@@ -36,7 +38,7 @@ def addMatch():
 def removeMatch():
     if curr_db.size() == 0:
         return "ERROR:Database is empty"
-    return 'Hello, World!'
+    curr_db[content["id"]].remove_User_matches()
 
 # expects request
 # {
@@ -63,6 +65,26 @@ def newUser():
     }
     return Response(json.dumps(json_response),mimetype='application/json')
 
+# expects request
+# {
+#   user ID
+#}
+@app.route('/deets',methods=['POST'])
+def deets():
+    content = request.get_json()
+    if content == None or content == '':
+        return 'No data'
+    id = content["id"]
+    json_response = {
+        "first_name":curr_db[id].first_name,
+        "last_name":curr_db[id].last_name,
+        "matches":curr_db[id].matches,
+        "age":curr_db[id].age,
+        "bio":curr_db[id].bio,
+        "img":curr_db[id].img,
+        "skill":curr_db[id].skill
+    }
+    return Response(json.dumps(json_response),mimetype='application/json')
 if __name__== "__main__":
     app.run(debug=True)
 

@@ -13,7 +13,5 @@ class User:
 
     def add_match(self,user):
         self.matches.append(user)
-    def remove_matches(self,DB):
-        for i in [x.id for x in self.matches]:
-            DB[x].matches=[y for y in DB[x].matches if y != self]
+    def remove_matches(self):
         self.matches.clear()
