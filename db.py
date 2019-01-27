@@ -7,7 +7,7 @@ class DB:
     def gen_database(self):
         bio=open("bios.txt", "r")#do bio.readline()
         age_first_last=open("age_first_last.txt","r")
-        for i in range(22)
+        for i in range(22):
             self.add_user(*age_first_last.readline().split(),bio.readline(),"./UserInfo/photos/"+str(i)+".png",random.randInt(0,3))
     # Add a user to the database
     def add_user(self, first_name,last_name,age,bio,img,skill):
