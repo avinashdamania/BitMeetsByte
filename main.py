@@ -6,7 +6,7 @@ from db import DB
 import json
 app = Flask(__name__)
 curr_db = DB()
-
+curr_db.gen_database()
 @app.route('/')
 def home():
     return 'hi'
