@@ -9,6 +9,8 @@ class DB:
         age_first_last=open("./UserInfo/first_last_age.txt","r")
         for i in range(21):
             self.add_user(*(age_first_last.readline().split()),bio.readline(),"./UserInfo/photos/"+str(i)+".png",random.randint(0,3))
+    def list_compatable(self,id):
+        return [y.id for y in self.database.values() if y.skill!=self.database[id].skill]
     # Add a user to the database
     def add_user(self, first_name,last_name,age,bio,img,skill):
         self.database[self.id] = User(first_name,last_name,age,bio,self.id,img,skill)

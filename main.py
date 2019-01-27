@@ -43,6 +43,13 @@ def removeMatch():
     json_response = {}
     return Response(json.dumps(json_response),mimetype='application/json')
 
+@app.route('/listComp',methods=['POST'])
+def listComp():
+    json_response = {
+        "list":str(curr_db.list_compatable(20))
+    }
+    return Response(json.dumps(json_response),mimetype='application/json')
+
 # expects request
 # {
 # first_name: [firstnamehere],
