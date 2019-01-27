@@ -13,11 +13,5 @@ class User:
 
     def add_match(self,user):
         self.matches.append(user)
-    def remove_matches(self,DB):
-        for i in [x.id for x in self.matches]:
-            DB[x].matches=[y for y in DB[x].matches if y != self]
+    def remove_matches(self):
         self.matches.clear()
-    def __str__(self):
-        return first_name+" "+last_name+" "+str(age)+" "+bio+" "+img+" "+str(skillDict)
-    def __repr__(self):
-        return last_name+" "+str(age)+" "+bio+" "+img+" "+str(skillDict)

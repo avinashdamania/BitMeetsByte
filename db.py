@@ -9,7 +9,6 @@ class DB:
         age_first_last=open("./UserInfo/first_last_age.txt","r")
         for i in range(21):
             self.add_user(*(age_first_last.readline().split()),bio.readline(),"./UserInfo/photos/"+str(i)+".png",random.randint(0,3))
-        print([v.skill for v in self.database.values()])
     # Add a user to the database
     def add_user(self, first_name,last_name,age,bio,img,skill):
         self.database[self.id] = User(first_name,last_name,age,bio,self.id,img,skill)
@@ -21,13 +20,16 @@ class DB:
         return self.database[id]
     # Clear a user's matches
     def remove_User_matches(self,id):
-        self.database[id].remove_matches(self.database)
+        for i in [x.id for x in database[id].matches]:
+            DB[x].matches=[y for y in DB[x].matches if y != database[id]]
+        self.database[id].remove_matches()
     # Delete the user from the database 
     def del_user(self, id):
         del self.database[id]
         
     def add_match(self,current_id,matched_user):
         self.database[current_id].add_match(matched_user)
+        self.database[matched_user].add_match(current_id)
     
     def size(self):
         return len(self.database)
