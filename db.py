@@ -3,7 +3,10 @@ class DB:
     def __init__(self):
         self.database = {}
         self.id = 0
-    
+    def gen_database(self):
+        bio=open("bios.txt", "r")#do bio.readline()
+        for i in range(22)
+            
     # Add a user to the database
     def add_user(self, first_name,last_name,age,bio,misc):
         user = User(first_name,last_name,age,bio,misc,self.id)
