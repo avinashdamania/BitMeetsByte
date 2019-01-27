@@ -46,7 +46,7 @@ def removeMatch():
 @app.route('/listComp',methods=['POST'])
 def listComp():
     json_response = {
-        "list":str(curr_db.list_compatable(20))
+        "list":curr_db.list_compatable(20)
     }
     return Response(json.dumps(json_response),mimetype='application/json')
 
