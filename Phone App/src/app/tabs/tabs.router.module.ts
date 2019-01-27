@@ -4,16 +4,16 @@ import { TabsPage } from './tabs.page';
 import { LoginPage } from '../login/login.page';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: LoginPage,
-    children:[
-      {
-        path:'tabs1',
-        loadChildren: '../tabs/tabs.module#Tabs1PageModule'
-      }
-    ]
-  },
+  // {
+  //   path: '',
+  //   component: LoginPage,
+  //   children:[
+  //     {
+  //       path:'tab1',
+  //       loadChildren: '../tabs/tabs.module#Tab1PageModule'
+  //     }
+  //   ]
+  // },
   {
     path: 'tabs',
     component: TabsPage,
