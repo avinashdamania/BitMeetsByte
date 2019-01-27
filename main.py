@@ -6,6 +6,10 @@ from db import DB
 app = Flask(__name__)
 curr_db = DB()
 
+@app.route('/')
+def home():
+    return 'hi'
+
 # {id: [name]}
 @app.route('/find',methods=['POST'])
 def findMatch():
